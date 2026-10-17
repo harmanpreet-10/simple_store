@@ -113,6 +113,8 @@ GEM
     erubi (1.13.1)
     et-orbi (1.4.2)
       tzinfo
+    faker (3.8.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.4-x64-mingw-ucrt)
     fugit (1.14.0)
       et-orbi (~> 1.4)
@@ -360,6 +362,7 @@ DEPENDENCIES
   bundler-audit
   capybara
   debug
+  faker
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
