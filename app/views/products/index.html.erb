@@ -9,6 +9,7 @@
       <%= link_to product.title, product_path(product) %>
       - <%= number_to_currency(product.price) %>
       - Stock: <%= product.stock_quantity %>
+      - Category: <%= product.category.name %>
     </li>
   <% end %>
 </ul>
