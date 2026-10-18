@@ -1,16 +1,22 @@
 
-require "faker"
+require "csv"
 
-# Delete existing products
 Product.destroy_all
+Category.destroy_all
 
-# Create 676 fake products
-676.times do
+csv_file = Rails.root.join("db", "products.csv")
+
+CSV.foreach(csv_file, headers: true) do |row|
+  category = Category.find_or_create_by!(name: row["category"])
+
   Product.create!(
-    title: Faker::Commerce.product_name,
-    price: Faker::Commerce.price(range: 1.0..1000.0),
-    stock_quantity: Faker::Number.between(from: 0, to: 100)
+    title: row["name"],
+    price: row["price"],
+    description: row["description"],
+    stock_quantity: row["stock quantity"],
+    category: category
   )
 end
 
+puts "Created #{Category.count} categories!"
 puts "Created #{Product.count} products!"
